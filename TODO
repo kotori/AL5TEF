@@ -1,0 +1,13 @@
+_NOTES_
+
+12/12/2012 [SOLVED]
+1.) Upon initialization, if you tap a keyboard arrow key, the player's sprite will run in place until a key is tapped again.
+
+12/12/2012
+2.) When moving from screen to screen (map to map) the transition between the two should be smooth. This will probably require the use
+     of triggers when creating the MAP object.
+
+12/18/2012
+3.) Implement new TMX map loading class, this will replace the current map loading routines.
+
+------------------------------------------------------------

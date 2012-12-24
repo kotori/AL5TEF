@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Laberinto Clone" />
+		<Option pch_mode="2" />
+		<Option compiler="gnu_gcc_461_compiler" />
+		<Build>
+			<Target title="Debug">
+				<Option output="..\bin\Debug\Laberinto Clone" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\bin\Debug" />
+				<Option object_output="..\obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gnu_gcc_461_compiler" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-DALLEGRO_STATICLINK" />
+					<Add directory="C:\dev\allegro-5.0.7-mingw-4.6.1-tdm\include" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libgcc" />
+					<Add library="liballegro-5.0.7-monolith-static-mt-debug.a" />
+					<Add library="libopenal-1.14-static-mt-debug.a" />
+					<Add library="libfreetype-2.4.8-static-mt-debug.a" />
+					<Add library="libFLAC-1.2.1-static-mt-debug.a" />
+					<Add library="libdumb-0.9.3-static-mt-debug.a" />
+					<Add library="libvorbisfile-1.3.2-static-mt-debug.a" />
+					<Add library="libvorbis-1.3.2-static-mt-debug.a" />
+					<Add library="libogg-1.2.1-static-mt-debug.a" />
+					<Add library="libzlib-1.2.5-static-mt-debug.a" />
+					<Add library="libshlwapi.a" />
+					<Add library="gdiplus" />
+					<Add library="uuid" />
+					<Add library="kernel32" />
+					<Add library="winmm" />
+					<Add library="psapi" />
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="user32" />
+					<Add library="comdlg32" />
+					<Add library="gdi32" />
+					<Add library="shell32" />
+					<Add library="ole32" />
+					<Add library="advapi32" />
+					<Add library="ws2_32" />
+					<Add directory="C:\dev\allegro-5.0.7-mingw-4.6.1-tdm\lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="..\bin\Release\Laberinto Clone" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\bin\Release" />
+				<Option object_output="..\obj\Release\" />
+				<Option type="1" />
+				<Option compiler="gnu_gcc_461_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add directory="C:\dev\allegro-5.0.7-mingw-4.6.1-tdm\include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-static-libgcc" />
+					<Add library="liballegro-5.0.7-monolith-static-mt-debug.a" />
+					<Add library="libopenal-1.14-static-mt-debug.a" />
+					<Add library="libfreetype-2.4.8-static-mt-debug.a" />
+					<Add library="libFLAC-1.2.1-static-mt-debug.a" />
+					<Add library="libdumb-0.9.3-static-mt-debug.a" />
+					<Add library="libvorbisfile-1.3.2-static-mt-debug.a" />
+					<Add library="libvorbis-1.3.2-static-mt-debug.a" />
+					<Add library="libogg-1.2.1-static-mt-debug.a" />
+					<Add library="libzlib-1.2.5-static-mt-debug.a" />
+					<Add library="libshlwapi.a" />
+					<Add library="gdiplus" />
+					<Add library="uuid" />
+					<Add library="kernel32" />
+					<Add library="winmm" />
+					<Add library="psapi" />
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="user32" />
+					<Add library="comdlg32" />
+					<Add library="gdi32" />
+					<Add library="shell32" />
+					<Add library="ole32" />
+					<Add library="advapi32" />
+					<Add library="ws2_32" />
+					<Add directory="C:\dev\allegro-5.0.7-mingw-4.6.1-tdm\lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-DALLEGRO_STATICLINK" />
+		</Compiler>
+		<Unit filename="..\src\Character.cpp" />
+		<Unit filename="..\src\Character.h" />
+		<Unit filename="..\src\Collidable.cpp" />
+		<Unit filename="..\src\Collidable.h" />
+		<Unit filename="..\src\GameManager.cpp" />
+		<Unit filename="..\src\GameManager.h" />
+		<Unit filename="..\src\Map.cpp" />
+		<Unit filename="..\src\Map.h" />
+		<Unit filename="..\src\NLTmxMap.cpp" />
+		<Unit filename="..\src\NLTmxMap.h" />
+		<Unit filename="..\src\RapidXML\rapidxml.hpp" />
+		<Unit filename="..\src\RapidXML\rapidxml_iterators.hpp" />
+		<Unit filename="..\src\RapidXML\rapidxml_print.hpp" />
+		<Unit filename="..\src\RapidXML\rapidxml_utils.hpp" />
+		<Unit filename="..\src\Tile.cpp" />
+		<Unit filename="..\src\Tile.h" />
+		<Unit filename="..\src\Util.h" />
+		<Unit filename="..\src\main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
