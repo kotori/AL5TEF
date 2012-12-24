@@ -1,0 +1,21 @@
+# Compiled object files
+*.slo
+*.lo
+*.o
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+
+# Compiled static libraries
+*.lai
+*.la
+*.a
+
+# Ignore compiled directories
+bin/*
+docs/*
+obj/*
+build/*.layout
+build/*.depend
+build/*.html
