@@ -22,6 +22,18 @@ public:
     // Draw the map to the screen.
     void drawMap( int layer );
 
+    // Get/Set map's id
+    int getId();
+    void setId( int id );
+
+    // Get/Set map's width
+    int getWidth();
+    void setWidth( int width );
+
+    // Get/Set map's height
+    int getHeight();
+    void setHeight( int height );
+
 private:
     int m_mapId;
 

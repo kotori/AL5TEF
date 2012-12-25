@@ -22,10 +22,12 @@
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --libs --static allegro-static-5.0 allegro_acodec-static-5.0 allegro_audio-static-5.0 allegro_color-static-5.0 allegro_dialog-static-5.0 allegro_font-static-5.0 allegro_image-static-5.0 allegro_main-static-5.0 allegro_memfile-static-5.0 allegro_physfs-static-5.0 allegro_primitives-static-5.0 allegro_ttf-static-5.0`" />
-					<Add option="-lsqlite3" />
 					<Add option="-lgcc_eh" />
+					<Add option="-lxml2" />
+					<Add option="-lz" />
 					<Add option="-static-libgcc" />
 					<Add option="-static-libstdc++" />
+					<Add library="liballegro_tiled" />
 					<Add directory="C:/dev/allegro-5.0.7-mingw-4.6.1-tdm/lib" />
 				</Linker>
 			</Target>
@@ -45,18 +47,34 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="`pkg-config --libs --static allegro-static-5.0 allegro_acodec-static-5.0 allegro_audio-static-5.0 allegro_color-static-5.0 allegro_dialog-static-5.0 allegro_font-static-5.0 allegro_image-static-5.0 allegro_main-static-5.0 allegro_memfile-static-5.0 allegro_physfs-static-5.0 allegro_primitives-static-5.0 allegro_ttf-static-5.0`" />
-					<Add option="-lsqlite3" />
 					<Add option="-lgcc_eh" />
+					<Add option="-lxml2" />
+					<Add option="-lz" />
 					<Add option="-static-libgcc" />
 					<Add option="-static-libstdc++" />
+					<Add library="liballegro_tiled" />
 					<Add directory="C:/dev/allegro-5.0.7-mingw-4.6.1-tdm/lib" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
+			<Add option="-g" />
+			<Add option="-Wno-conversion-null" />
 			<Add option="-DALLEGRO_STATICLINK" />
+			<Add directory="C:/dev/allegro-5.0.7-mingw-4.6.1-tdm/include" />
 		</Compiler>
+		<Linker>
+			<Add option="`pkg-config --libs --static allegro-static-5.0 allegro_acodec-static-5.0 allegro_audio-static-5.0 allegro_color-static-5.0 allegro_dialog-static-5.0 allegro_font-static-5.0 allegro_image-static-5.0 allegro_main-static-5.0 allegro_memfile-static-5.0 allegro_physfs-static-5.0 allegro_primitives-static-5.0 allegro_ttf-static-5.0`" />
+			<Add option="-lgcc_eh" />
+			<Add option="-lxml2" />
+			<Add option="-lz" />
+			<Add option="-static-libgcc" />
+			<Add option="-static-libstdc++" />
+			<Add library="liballegro_tiled" />
+			<Add directory="C:/dev/allegro-5.0.7-mingw-4.6.1-tdm/lib" />
+		</Linker>
 		<Unit filename="../src/Character.cpp" />
 		<Unit filename="../src/Character.h" />
 		<Unit filename="../src/Collidable.cpp" />
@@ -65,13 +83,6 @@
 		<Unit filename="../src/GameManager.h" />
 		<Unit filename="../src/Map.cpp" />
 		<Unit filename="../src/Map.h" />
-		<Unit filename="../src/NLTmxMap.cpp" />
-		<Unit filename="../src/NLTmxMap.h" />
-		<Unit filename="../src/RapidXML/rapidxml.hpp" />
-		<Unit filename="../src/RapidXML/rapidxml_iterators.hpp" />
-		<Unit filename="../src/RapidXML/rapidxml_print.hpp" />
-		<Unit filename="../src/RapidXML/rapidxml_utils.hpp" />
-		<Unit filename="../src/ResourceManager.h" />
 		<Unit filename="../src/Tile.cpp" />
 		<Unit filename="../src/Tile.h" />
 		<Unit filename="../src/Util.h" />
