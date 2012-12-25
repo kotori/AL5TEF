@@ -9,35 +9,29 @@ class CMap
 public:
     // Class constructor.
     CMap();
+
+    // Class constructor with ID override.
     CMap( int id );
+
     // Class destructor.
     ~CMap();
 
     // Build our map from a loaded file.
-    int loadMap( const char *filename, std::vector< std::vector <int> > &map );
+    int loadMap( const char *filename );
 
     // Draw the map to the screen.
-    void drawMap();
-    void drawMapLayer1();
-    void drawMapLayer2();
-    void drawMapLayer3();
-    void drawMapDebug();
-    // Draw the map to the screen starting at x and y.
-    //void drawMap( int x, int y );
+    void drawMap( int layer );
 
 private:
     int m_mapId;
-    std::vector<std::vector <CTile> > m_map;
 
-    std::vector < std::vector <int> > layer1;
-    std::vector < std::vector <int> > layer2;
-    std::vector < std::vector <int> > layer3;
-    std::vector < std::vector <int> > layer4;
+    std::vector <CTile> m_tileset;
 
-    std::vector < std::vector <std::vector <int> > > m_completeMap;
+    ALLEGRO_MAP *m_map;
 
-    int m_loadState;
-    ALLEGRO_BITMAP *m_tileSet;
+    int m_width;
+
+    int m_height;
 };
 
 #endif // MAP_H

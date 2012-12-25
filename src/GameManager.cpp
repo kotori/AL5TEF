@@ -1,6 +1,5 @@
 
 #include "Util.h"
-#include "NLTmxMap.h"
 #include "Tile.h"
 #include "Character.h"
 
@@ -89,11 +88,6 @@ void CGameManager::Shutdown()
         }
     }
 
-}
-
-void CGameManager::LoadMap( std::string mapPath )
-{
-    //
 }
 
 int CGameManager::Initialize()
@@ -204,12 +198,14 @@ int CGameManager::Initialize()
     al_get_standard_path( ALLEGRO_EXENAME_PATH );
 
 
+    /*
     const char *str = "Maps/zone_01_01.map";
     if( myMap.loadMap( str, completeMap ) )
     {
         errorPrompt( "loadMap()", "Failed to load map!\nCheck mapfile format: %s", str );
         return -1;
     }
+    */
 
     //
     // Load our fonts.
