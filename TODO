@@ -20,4 +20,10 @@ _NOTES_
   3.) draw player
   4.) draw all other NPCs, misc sprites.
   5.) draw layer 3 - final.
+
+12/24/2012
+5.) Look into using the allegro_tiled engine instead of the current loading routines. This library should take care of
+   loading AND drawing of Tiled based maps.
+  https://github.com/dradtke/allegro_tiled
+
 ------------------------------------------------------------
