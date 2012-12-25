@@ -10,4 +10,14 @@ _NOTES_
 12/18/2012
 3.) Implement new TMX map loading class, this will replace the current map loading routines.
 
+12/24/2012
+4.) Implement the TMX map loading class to also draw the loaded map, based upon its layer
+ ex:  void drawMap( int layer );
+    This should ease drawing the map's individual layers
+ ex: MAIN DRAWING ROUTINE
+  1.) draw layer 1
+  2.) draw layer 2
+  3.) draw player
+  4.) draw all other NPCs, misc sprites.
+  5.) draw layer 3 - final.
 ------------------------------------------------------------
