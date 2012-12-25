@@ -18,4 +18,5 @@ AL5TEF (Allegro5 Tile Engine Framework) is free software; you can redistribute i
 
 AL5TEF is an Allegro5 tile engine framework based mostly on C++. This framework was
  designed to make it easy to rapidly prototype new games based upon tiled maps. This
- framework makes use of the following libraries: Allegro5, and allegro_tiled.
+ framework makes use of the following libraries: Allegro5, and [allegro_tiled](https://github.com/dradtke/allegro_tiled).
+
