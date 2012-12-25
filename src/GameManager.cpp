@@ -7,6 +7,7 @@
 #include "GameManager.h"
 
 
+
 CGameManager::CGameManager( const char *gameTitle )
 {
     // Nullify our Allegro objects before working with them.
@@ -88,6 +89,11 @@ void CGameManager::Shutdown()
         }
     }
 
+}
+
+void CGameManager::LoadMap( std::string mapPath )
+{
+    //
 }
 
 int CGameManager::Initialize()
