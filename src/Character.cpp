@@ -49,6 +49,8 @@ ALLEGRO_BITMAP* CCharacter::getImage( int index )
 void CCharacter::setImage( int index, ALLEGRO_BITMAP *img )
 {
     m_bmpImage[index] = img;
+    m_container.w = al_get_bitmap_width( img );
+    m_container.h = al_get_bitmap_height( img );
 }
 
 // Is the character currently moving?

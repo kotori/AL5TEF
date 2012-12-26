@@ -114,8 +114,8 @@ class CGameManager
 
         void fixDirectory();
         bool checkCollisions();
-        void cameraUpdate( float *cameraPosition, float x, float y, int width, int height );
-        void drawScene( float *cameraPositions, float player_x, float player_y );
+        void cameraUpdate();
+        void drawScene();
         void printer( ALLEGRO_DISPLAY *disp, int x, int y, const char *msg, ... );
         void printer( ALLEGRO_DISPLAY *disp, int fontID, int x, int y, const char *msg, ... );
         void handleKeyboardDirectionChange();
@@ -128,7 +128,8 @@ class CGameManager
         ALLEGRO_BITMAP      *m_bmpFPSCount;
         ALLEGRO_FONT        *m_fonts[MAX_NUM_FONTS];
         ALLEGRO_SAMPLE      *m_samples[MAX_AUDIO_SAMPLES];
-        ALLEGRO_TRANSFORM   m_camera;
+        ViewPort            m_viewPort;
+        //ALLEGRO_TRANSFORM   m_camera;
 
         CCharacter *m_player;
 

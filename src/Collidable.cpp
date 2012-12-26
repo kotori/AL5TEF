@@ -78,6 +78,26 @@ void CCollidable::setContainer( int x, int y, int w, int h )
 	m_container.h = h;
 }
 
+float CCollidable::getWidth()
+{
+    return m_container.w;
+}
+
+void CCollidable::setWidth( float width )
+{
+    m_container.w = width;
+}
+
+float CCollidable::getHeight()
+{
+    return m_container.h;
+}
+
+void CCollidable::setHeight( float height )
+{
+    m_container.h = height;
+}
+
 float CCollidable::getX()
 {
     return m_container.x;

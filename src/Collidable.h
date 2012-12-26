@@ -108,6 +108,15 @@ public:
      */
 	virtual bool isColliding( Rect r );
 
+	float getWidth();
+
+	void setWidth( float width );
+
+	float getHeight();
+
+	void setHeight( float height );
+
+
 	/**
 	 * \fn void getX()
 	 * \details Return the X-axis location of this object.

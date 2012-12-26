@@ -296,6 +296,17 @@ typedef struct Rect
 	int h;	/**< Rect's height, in pixels. */
 } Rect; /**< Forward declaration of the Rect object. */
 
+typedef struct ViewPort
+{
+    int x;
+    int xLimit;
+    int y;
+    int yLimit;
+    int w;
+    int h;
+    ALLEGRO_TRANSFORM   m_camera;
+} ViewPort; /**< Forward declaration of the ViewPort/Camera object. */
+
 
 /**
  * A vector of vector of ints representing our layered map.

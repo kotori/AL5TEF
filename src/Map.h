@@ -20,7 +20,7 @@ public:
     int loadMap( const char *filename );
 
     // Draw the map to the screen.
-    void drawMap( int layer );
+    void drawMapLayer( char *layerName, ViewPort &cam );
 
     // Get/Set map's id
     int getId();
@@ -44,6 +44,8 @@ private:
     int m_width;
 
     int m_height;
+
+    int m_numLayers;
 };
 
 #endif // MAP_H

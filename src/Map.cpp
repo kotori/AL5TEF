@@ -34,7 +34,6 @@ int CMap::loadMap( const char *filename )
         return -1;
     }
 
-    // Now that we've loaded our map, we can grab some basic values.
 
     // Set the map's total width.
     m_width = al_get_map_width( m_map ) * al_get_tile_width( m_map );
@@ -45,7 +44,7 @@ int CMap::loadMap( const char *filename )
     return 0;
 }
 
-void CMap::drawMap( int layer )
+void CMap::drawMapLayer( char *layerName, ViewPort &cam )
 {
     /*
      * Draw the whole layer to the target backbuffer at the given location.
@@ -53,6 +52,7 @@ void CMap::drawMap( int layer )
      * void al_draw_tile_layer_for_name( m_map, char *name, float dx, float dy, 0 )
      */
     // al_draw_map_region( m_map, map_x, map_y, screen_width, screen_height, 0, 0, 0 );
+    //al_draw_layer_region_for_name( m_map, layerName, cam.x, cam.y, ScreenWidth, ScreenHeight, 0, 0, 0 );
 }
 
 // Get/Set map's id

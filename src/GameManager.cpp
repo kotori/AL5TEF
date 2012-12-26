@@ -24,9 +24,9 @@ CGameManager::CGameManager( const char *gameTitle )
     // Number of frames processed.
     nFrames = 0;
     // Camera X position.
-    cameraPosition[0] = START_X_POS;
+    m_viewPort.x = START_X_POS;
     // Camera Y position.
-    cameraPosition[1] = START_Y_POS;
+    m_viewPort.y = START_Y_POS;
     // Current direction moving in.
     nMoveDirection = 0;
     // Current x position.
@@ -195,7 +195,10 @@ int CGameManager::Initialize()
     al_set_target_backbuffer( m_display );
     al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );
 
-    al_get_standard_path( ALLEGRO_EXENAME_PATH );
+    ALLEGRO_PATH *path = al_get_standard_path( ALLEGRO_RESOURCES_PATH );
+    al_append_path_component( path, "resources" );
+    al_change_directory( al_path_cstr( path, '/' ) );  // change the working directory
+    al_destroy_path( path );
 
 
     /*
@@ -261,22 +264,17 @@ int CGameManager::Initialize()
         }
     }
 
-    // Now that we have our images loaded into the animation array,
-    //  set the width and height values based off of the first image in the array.
-    //int plyrWidth = al_get_bitmap_width( m_player->m_bmpPlayerWalk[0] );
-    //int plyrHeight = al_get_bitmap_height( m_player->m_bmpPlayerWalk[0] );
-    int plyrWidth = al_get_bitmap_width( m_player->getImage( 0 ) );
-    int plyrHeight = al_get_bitmap_height( m_player->getImage( 0 ) );
-
     // Set our player's initial direction.
     m_player->setDirection( FACING_DOWN );
     // We want our player visible of course.
     m_player->setIsVisible( true );
     // Setup our collision container with the player's width and height.
-    m_player->setContainer( 0, 0, plyrWidth, plyrHeight );
+    m_player->setContainer( 0, 0, al_get_bitmap_width( m_player->getImage( 0 )), al_get_bitmap_height( m_player->getImage( 0 ) ) );
+
     // Set our player's start x and y position.
     m_player->setX( START_X_POS );
     m_player->setY( START_Y_POS );
+
     // Set the player's speed.
     m_player->setAttribute( ATTRIBUTE_LIST::ATTR_SPEED, 2 );
 
@@ -303,6 +301,11 @@ int CGameManager::Initialize()
     al_register_event_source( m_eventQueue, al_get_timer_event_source( m_fpsTimer ) );
     al_register_event_source( m_eventQueue, al_get_mouse_event_source() );
     al_register_event_source( m_eventQueue, al_get_keyboard_event_source() );
+
+    // Set the camera's parameters.
+    Rect container = m_player->getContainer();
+    m_viewPort.xLimit = container.x + container.w / 2;
+    m_viewPort.yLimit = container.y + container.h / 2;
 
     // Set the backbuffer and initial background color, then make it visible.
     al_set_target_bitmap( al_get_backbuffer( m_display ) );
@@ -388,6 +391,9 @@ int CGameManager::RunGameLoop()
                 nFrames = 0;
                 // Set the redraw flag to true so we can see our changes.
                 bRedraw = true;
+
+                //cameraUpdate();
+
             }
 
             if( ev.timer.source == m_timer )
@@ -485,7 +491,7 @@ int CGameManager::RunGameLoop()
             // We need to ensure that whatever is drawn that is supposed
             //  to be visible on the map is drawn within the CAMERA's focus.
             //drawScene( enemyList, cameraPosition, player->getX(), player->getY() );
-            drawScene( cameraPosition, m_player->getX(), m_player->getY() );
+            drawScene();
 
             // Flip the display to reveal our changes.
             al_flip_display();
@@ -691,18 +697,23 @@ void CGameManager::fixDirectory()
     al_destroy_path( path );
 }
 
-// cameraUpdate( float, float, float, int, int )
+// cameraUpdate()
 //  Updates the camera position for a smooth scrolling map.
 //  This ensures that when we move around, the map scrolls with us.
-void CGameManager::cameraUpdate( float *cameraPosition, float x, float y, int width, int height )
+void CGameManager::cameraUpdate()
 {
-    cameraPosition[0] = -( ScreenWidth / 2 ) + ( x + width / 2 );
-    cameraPosition[1] = -( ScreenHeight / 2 ) + ( y + height / 2 );
+    m_viewPort.x = -( ScreenWidth / 2 ) + ( m_player->getX() + m_player->getWidth() / 2 );
+    m_viewPort.y = -( ScreenHeight / 2 ) + ( m_player->getY() + m_player->getHeight() / 2 );
 
-    if( cameraPosition[0] < 0 )
-        cameraPosition[0] = 0;
-    if( cameraPosition[1] < 0 )
-        cameraPosition[1] = 0;
+    // This may need work to improve camera presentation.
+    if( m_viewPort.x < 0 )
+        m_viewPort.x = 0;
+    if( m_viewPort.y < 0 )
+        m_viewPort.y = 0;
+
+    al_identity_transform( &m_viewPort.m_camera );
+    al_translate_transform( &m_viewPort.m_camera, -m_viewPort.x, -m_viewPort.y );
+    al_use_transform( &m_viewPort.m_camera );
 }
 
 // printer( ALLEGRO_DISPLAY*, int, int, int, const char*, ... )
@@ -729,16 +740,17 @@ void CGameManager::printer( ALLEGRO_DISPLAY *disp, int fontID, int x, int y, con
 //  Prints everything to the screen. This function is necessary to make our
 //  movement changes, etc visible on the screen. The scene is updated with the camera's
 //  current position and the player's current position.
-void CGameManager::drawScene( float *cameraPositions, float player_x, float player_y )
+void CGameManager::drawScene()
 {
     // Background color first.
     al_clear_to_color( al_map_rgb( 255, 255, 255 ) );
 
     // Draw our camera offsetted around our player.
-    cameraUpdate( cameraPositions, player_x, player_y, 32, 32 );
-    al_identity_transform( &m_camera );
-    al_translate_transform( &m_camera, -cameraPositions[0], -cameraPositions[1] );
-    al_use_transform( &m_camera );
+    cameraUpdate();
+    //cameraUpdate( cameraPositions, player_x, player_y, 32, 32 );
+    //al_identity_transform( &m_camera );
+    //al_translate_transform( &m_camera, -cameraPositions[0], -cameraPositions[1] );
+    //al_use_transform( &m_camera );
 
     // TODO:
     // Print map layer 1.
@@ -776,17 +788,17 @@ void CGameManager::drawScene( float *cameraPositions, float player_x, float play
         // Print offset from the left.
         int offSet = 8;
         // FPS.
-        printer( m_display, FONT_DEBUG, cameraPositions[0]+offSet, cameraPositions[1]+8, szFPSText );
+        printer( m_display, FONT_DEBUG, m_viewPort.x+offSet, m_viewPort.y+8, szFPSText );
         // Player's position
-        printer( m_display, FONT_DEBUG, cameraPositions[0]+offSet, cameraPositions[1]+24, szPlayerPosText );
+        printer( m_display, FONT_DEBUG, m_viewPort.x+offSet, m_viewPort.y+24, szPlayerPosText );
         // Enemy's position 1
-        printer( m_display, FONT_DEBUG, cameraPositions[0]+offSet, cameraPositions[1]+40, szEnemyPosText1 );
+        printer( m_display, FONT_DEBUG, m_viewPort.x+offSet, m_viewPort.y+40, szEnemyPosText1 );
         // Enemy's position 2
-        printer( m_display, FONT_DEBUG, cameraPositions[0]+offSet, cameraPositions[1]+56, szEnemyPosText2 );
+        printer( m_display, FONT_DEBUG, m_viewPort.x+offSet, m_viewPort.y+56, szEnemyPosText2 );
         // Player's motion indicator
-        printer( m_display, FONT_DEBUG, cameraPositions[0]+offSet, cameraPositions[1]+72, szIsMoving );
+        printer( m_display, FONT_DEBUG, m_viewPort.x+offSet, m_viewPort.y+72, szIsMoving );
         // Current Direction
-        printer( m_display, FONT_DEBUG, cameraPositions[0]+offSet, cameraPositions[1]+88, szCurrentDirection );
+        printer( m_display, FONT_DEBUG, m_viewPort.x+offSet, m_viewPort.y+88, szCurrentDirection );
     }
 
 }
