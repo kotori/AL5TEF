@@ -7,10 +7,10 @@ _NOTES_
 2.) When moving from screen to screen (map to map) the transition between the two should be smooth. This will probably require the use
      of triggers when creating the MAP object.
 
-12/18/2012
+12/18/2012 [SOLVED]
 3.) Implement new TMX map loading class, this will replace the current map loading routines.
 
-12/24/2012
+12/24/2012 
 4.) Implement the TMX map loading class to also draw the loaded map, based upon its layer
  ex:  void drawMap( int layer );
     This should ease drawing the map's individual layers
@@ -21,7 +21,7 @@ _NOTES_
   4.) draw all other NPCs, misc sprites.
   5.) draw layer 3 - final.
 
-12/24/2012
+12/24/2012 [SOLVED]
 5.) Look into using the allegro_tiled engine instead of the current loading routines. This library should take care of
    loading AND drawing of Tiled based maps.
   https://github.com/dradtke/allegro_tiled
