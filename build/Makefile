@@ -2,7 +2,7 @@
 
 # !IMPORTANT!
 # Source file names, must include them all.
-Sources=NLTmxMap.cpp Collidable.cpp Tile.cpp Map.cpp Character.cpp GameManager.cpp main.cpp
+Sources=Collidable.cpp Tile.cpp Map.cpp Character.cpp GameManager.cpp main.cpp
 
 # Final executable name
 Executable=AllegroGame
@@ -11,11 +11,11 @@ Executable=AllegroGame
 CFlags=-c -Wall -g -Iinc -std=c++0x
 
 # Linker flags
-LDFlags=
+LDFlags=-lallegro_tiled
 
 # !IMPORTANT!
 # You must change the line below to match your Allegro installation
-PkgConfigFlags=`pkg-config --libs --static allegro-static-5.0 allegro_acodec-static-5.0 allegro_audio-static-5.0 allegro_color-static-5.0 allegro_dialog-static-5.0 allegro_font-static-5.0 allegro_image-static-5.0 allegro_main-static-5.0 allegro_memfile-static-5.0 allegro_physfs-static-5.0 allegro_primitives-static-5.0 allegro_ttf-static-5.0`
+PkgConfigFlags=`pkg-config --libs --static allegro-static-5.0 allegro_acodec-static-5.0 allegro_audio-static-5.0 allegro_color-static-5.0 allegro_dialog-static-5.0 allegro_font-static-5.0 allegro_image-static-5.0 allegro_main-static-5.0 allegro_memfile-static-5.0 allegro_physfs-static-5.0 allegro_primitives-static-5.0 allegro_ttf-static-5.0 libxml-2.0 zlib glib-2.0 allegro_tiled-5.0`
 
 # Common directories
 ObjectDir=../obj/
