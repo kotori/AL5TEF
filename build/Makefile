@@ -11,7 +11,7 @@ Executable=AllegroGame
 CFlags=-c -Wall -g -Iinc -std=c++0x
 
 # Linker flags
-LDFlags=-lallegro_tiled
+LDFlags=
 
 # !IMPORTANT!
 # You must change the line below to match your Allegro installation
